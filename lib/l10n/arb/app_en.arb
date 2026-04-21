@@ -1,0 +1,222 @@
+{
+  "@@locale": "en",
+
+  "appName": "RentFlow",
+  "@appName": { "description": "App name" },
+
+  "save": "Save",
+  "cancel": "Cancel",
+  "close": "Close",
+  "retry": "Retry",
+  "viewAll": "View All",
+  "all": "All",
+  "paid": "Paid",
+  "due": "Due",
+  "overdue": "Overdue",
+  "pending": "Pending",
+  "loading": "Loading…",
+  "copiedToClipboard": "Copied to clipboard",
+  "noInternetConnection": "No internet connection",
+  "checkNetwork": "Please check your network and try again.",
+  "somethingWentWrong": "Something went wrong. Please try again.",
+
+  "welcomeTitle": "Welcome to RentFlow",
+  "@welcomeTitle": { "description": "Landing page headline" },
+  "welcomeSubtitle": "Manage your rentals with ease",
+  "imAnOwner": "I'm an Owner",
+  "imARenter": "I'm a Renter",
+  "privacy": "Privacy",
+  "terms": "Terms",
+
+  "signIn": "Sign In",
+  "signUp": "Sign Up",
+  "createAccount": "Create Account",
+  "phoneOrEmail": "Email or Phone",
+  "phoneOrEmailHint": "email@example.com or +977 9800000000",
+  "password": "Password",
+  "passwordHint": "••••••••",
+  "fullName": "Full Name",
+  "fullNameHint": "John Doe",
+  "phone": "Phone",
+  "phoneHint": "+977 9800000000",
+  "email": "Email",
+  "emailHint": "john@example.com",
+  "confirmPassword": "Confirm Password",
+  "minEightChars": "Min 8 characters",
+  "forgotPassword": "Forgot Password?",
+  "noAccount": "Don't have an account?",
+  "alreadyHaveAccount": "Already have an account? Sign In",
+  "iAgreeTo": "I agree to",
+  "termsAndConditions": "Terms & Conditions",
+  "weak": "Weak",
+  "fair": "Fair",
+  "strong": "Strong",
+  "passwordHintNote": "We'll use this to send rent updates",
+  "showPassword": "Show password",
+  "hidePassword": "Hide password",
+
+  "dashboard": "Dashboard",
+  "properties": "Properties",
+  "tenants": "Tenants",
+  "payments": "Payments",
+  "profile": "Profile",
+  "bills": "Bills",
+
+  "goodMorning": "Good Morning",
+  "goodAfternoon": "Good afternoon",
+  "goodEvening": "Good evening",
+  "greeting": "Good Morning, {name}",
+  "@greeting": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "activeProperties": "Active Properties",
+  "manageAll": "Manage all →",
+  "newThisMonth": "new this month",
+  "collected": "Collected",
+  "vsTarget": "vs {amount} target",
+  "@vsTarget": {
+    "placeholders": {
+      "amount": { "type": "String" }
+    }
+  },
+  "overdueLabel": "{count} payments overdue",
+  "@overdueLabel": {
+    "placeholders": {
+      "count": { "type": "String" }
+    }
+  },
+  "quickActions": "Quick Actions",
+  "addProperty": "Add Property",
+  "addFirstProperty": "Add Your First Property",
+  "generateBill": "Generate Bill",
+  "viewPayments": "View Payments",
+  "recentActivity": "Recent Activity",
+
+  "myProperties": "My Properties",
+  "noPropertiesYet": "No properties yet",
+  "propertyName": "Property Name",
+  "location": "Location",
+  "unitCount": "Unit Count",
+  "baseRent": "Base Rent",
+  "address": "Address",
+  "propertySaved": "Property saved",
+  "propertyNameRequired": "Property name is required",
+  "occupied": "Occupied",
+  "vacant": "Vacant",
+  "editProperty": "Edit Property",
+  "viewTenants": "View Tenants",
+  "deleteProperty": "Delete Property",
+  "tenantsOccupied": "Tenants: {occupied}/{total}",
+  "@tenantsOccupied": {
+    "placeholders": {
+      "occupied": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+
+  "searchTenants": "Search tenants…",
+  "noPaymentsRecorded": "No payments recorded yet",
+  "noPaymentsYet": "No payments yet",
+  "markAsPaid": "Mark as Paid",
+  "billRef": "Bill Ref",
+  "paidOn": "Paid on",
+
+  "generateBillTitle": "Generate Bill",
+  "selectTenant": "Select Tenant",
+  "rentDetails": "Rent Details",
+  "addCharge": "Add Charge",
+  "addDeduction": "Add Deduction",
+  "totalRent": "Total Rent",
+  "dueDate": "Due Date",
+  "notes": "Notes",
+  "sendBill": "Send Bill",
+  "billSentTo": "Bill sent to {name}",
+  "@billSentTo": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "chargeDescription": "Charge description",
+  "amount": "Amount",
+
+  "stayUpdated": "Stay Updated",
+  "enableNotificationsSubtitle": "Enable push notifications for rent alerts",
+  "rentflowNotifyDesc": "RentFlow can notify you when bills are generated and payments arrive.",
+  "notNow": "Not now",
+  "grant": "Grant",
+  "signOut": "Sign out",
+
+  "rentDue": "Rent Due",
+  "payNow": "Pay Now",
+  "viewBillDetails": "View Bill Details",
+  "nextPayment": "Next Payment",
+  "lastPaymentPaid": "Last Payment Paid",
+  "annualRent": "Annual Rent",
+  "landlordInfo": "Landlord Info",
+  "recurringMonthly": "Recurring monthly",
+  "noLeaseLinkedYet": "No lease linked yet",
+  "noLeaseDescription": "When your landlord links your account to a unit, your rent and bills will appear here.",
+  "daysRemaining": "{days} days remaining",
+  "@daysRemaining": {
+    "placeholders": {
+      "days": { "type": "int" }
+    }
+  },
+  "dueBy": "Due by {date}",
+  "@dueBy": {
+    "placeholders": {
+      "date": { "type": "String" }
+    }
+  },
+
+  "noBillsYet": "No bills yet",
+  "generatedOn": "Generated on {date}",
+  "@generatedOn": {
+    "placeholders": {
+      "date": { "type": "String" }
+    }
+  },
+
+  "payRentTitle": "Pay Rent",
+  "paymentMethod": "Payment Method",
+  "bankTransfer": "Bank Transfer",
+  "upi": "UPI",
+  "debitCard": "Debit Card",
+  "cheque": "Cheque",
+  "copyDetails": "Copy Details",
+  "openUpiApp": "Open UPI App",
+  "paymentSuccessful": "Payment Successful ✓",
+  "returnToDashboard": "Return to Dashboard",
+  "payButtonLabel": "Pay now",
+  "noInvoiceFound": "No pending bill found. Ask your landlord to generate a bill.",
+
+  "rentBreakdown": "Rent Breakdown",
+  "additionalCharges": "Additional Charges",
+  "deductions": "Deductions",
+  "totalDue": "Total Due",
+  "generated": "Generated",
+  "downloadInvoice": "Download Invoice",
+  "shareBill": "Share Bill",
+  "contactLandlord": "Contact Landlord",
+
+  "paymentHistory": "Payment History",
+  "totalYtd": "Total YTD",
+  "monthlyAvg": "Monthly Avg",
+  "transactionId": "Transaction ID",
+  "method": "Method",
+
+  "languageEnglish": "English",
+  "languageNepali": "नेपाली",
+  "changeLanguage": "Change Language",
+
+  "optionalField": "optional",
+  "@optionalField": { "description": "Shown next to optional form fields" },
+
+  "wrongRoleOwner": "This account is registered as an owner. Please go back and tap 'I'm an Owner'.",
+  "@wrongRoleOwner": { "description": "Shown when a renter page detects an owner account" },
+
+  "wrongRoleRenter": "This account is registered as a renter. Please go back and tap 'I'm a Renter'.",
+  "@wrongRoleRenter": { "description": "Shown when an owner page detects a renter account" }
+}

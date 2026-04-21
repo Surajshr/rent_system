@@ -1,0 +1,215 @@
+{
+  "@@locale": "ne",
+
+  "appName": "RentFlow",
+  "save": "सुरक्षित गर्नुहोस्",
+  "cancel": "रद्द गर्नुहोस्",
+  "close": "बन्द गर्नुहोस्",
+  "retry": "पुनः प्रयास गर्नुहोस्",
+  "viewAll": "सबै हेर्नुहोस्",
+  "all": "सबै",
+  "paid": "भुक्तान गरिएको",
+  "due": "बाँकी",
+  "overdue": "म्याद नाघेको",
+  "pending": "प्रक्रियामा",
+  "loading": "लोड हुँदैछ…",
+  "copiedToClipboard": "क्लिपबोर्डमा प्रतिलिपि गरियो",
+  "noInternetConnection": "इन्टरनेट जडान छैन",
+  "checkNetwork": "कृपया आफ्नो नेटवर्क जाँच गर्नुहोस् र पुनः प्रयास गर्नुहोस्।",
+  "somethingWentWrong": "केही समस्या भयो। कृपया पुनः प्रयास गर्नुहोस्।",
+
+  "welcomeTitle": "RentFlow मा स्वागत छ",
+  "welcomeSubtitle": "सजिलैसँग आफ्नो भाडा व्यवस्थापन गर्नुहोस्",
+  "imAnOwner": "म मालिक हुँ",
+  "imARenter": "म भाडावाल हुँ",
+  "privacy": "गोपनीयता",
+  "terms": "नियमहरू",
+
+  "signIn": "साइन इन",
+  "signUp": "साइन अप",
+  "createAccount": "खाता बनाउनुहोस्",
+  "phoneOrEmail": "इमेल वा फोन",
+  "phoneOrEmailHint": "email@example.com वा +977 9800000000",
+  "password": "पासवर्ड",
+  "passwordHint": "••••••••",
+  "fullName": "पूरा नाम",
+  "fullNameHint": "राम बहादुर",
+  "phone": "फोन",
+  "phoneHint": "+977 9800000000",
+  "email": "इमेल",
+  "emailHint": "john@example.com",
+  "confirmPassword": "पासवर्ड पुष्टि गर्नुहोस्",
+  "minEightChars": "कम्तीमा ८ अक्षर",
+  "forgotPassword": "पासवर्ड बिर्सनुभयो?",
+  "noAccount": "खाता छैन?",
+  "alreadyHaveAccount": "पहिले नै खाता छ? साइन इन गर्नुहोस्",
+  "iAgreeTo": "म सहमत छु",
+  "termsAndConditions": "नियम र सर्तहरू",
+  "weak": "कमजोर",
+  "fair": "ठीकठाक",
+  "strong": "बलियो",
+  "passwordHintNote": "हामी यो भाडा अपडेट पठाउन प्रयोग गर्नेछौं",
+  "showPassword": "पासवर्ड देखाउनुहोस्",
+  "hidePassword": "पासवर्ड लुकाउनुहोस्",
+
+  "dashboard": "ड्यासबोर्ड",
+  "properties": "सम्पत्तिहरू",
+  "tenants": "भाडावालहरू",
+  "payments": "भुक्तानीहरू",
+  "profile": "प्रोफाइल",
+  "bills": "बिलहरू",
+
+  "goodMorning": "शुभ प्रभात",
+  "goodAfternoon": "शुभ दिउँसो",
+  "goodEvening": "शुभ साँझ",
+  "greeting": "शुभ प्रभात, {name}",
+  "@greeting": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "activeProperties": "सक्रिय सम्पत्तिहरू",
+  "manageAll": "सबै व्यवस्थापन →",
+  "newThisMonth": "यस महिना नयाँ",
+  "collected": "संकलित",
+  "vsTarget": "{amount} लक्ष्य विरुद्ध",
+  "@vsTarget": {
+    "placeholders": {
+      "amount": { "type": "String" }
+    }
+  },
+  "overdueLabel": "{count} भुक्तानी म्याद नाघेको",
+  "@overdueLabel": {
+    "placeholders": {
+      "count": { "type": "String" }
+    }
+  },
+  "quickActions": "छिटो कार्यहरू",
+  "addProperty": "सम्पत्ति थप्नुहोस्",
+  "addFirstProperty": "पहिलो सम्पत्ति थप्नुहोस्",
+  "generateBill": "बिल उत्पन्न गर्नुहोस्",
+  "viewPayments": "भुक्तानी हेर्नुहोस्",
+  "recentActivity": "हालका गतिविधिहरू",
+
+  "myProperties": "मेरा सम्पत्तिहरू",
+  "noPropertiesYet": "अहिलेसम्म कुनै सम्पत्ति छैन",
+  "propertyName": "सम्पत्तिको नाम",
+  "location": "स्थान",
+  "unitCount": "इकाई संख्या",
+  "baseRent": "आधार भाडा",
+  "address": "ठेगाना",
+  "propertySaved": "सम्पत्ति सुरक्षित भयो",
+  "propertyNameRequired": "सम्पत्तिको नाम आवश्यक छ",
+  "occupied": "भरिएको",
+  "vacant": "खाली",
+  "editProperty": "सम्पत्ति सम्पादन गर्नुहोस्",
+  "viewTenants": "भाडावाल हेर्नुहोस्",
+  "deleteProperty": "सम्पत्ति मेट्नुहोस्",
+  "tenantsOccupied": "भाडावाल: {occupied}/{total}",
+  "@tenantsOccupied": {
+    "placeholders": {
+      "occupied": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+
+  "searchTenants": "भाडावाल खोज्नुहोस्…",
+  "noPaymentsRecorded": "अहिलेसम्म कुनै भुक्तानी दर्ता छैन",
+  "noPaymentsYet": "अहिलेसम्म कुनै भुक्तानी छैन",
+  "markAsPaid": "भुक्तान भएको चिन्ह लगाउनुहोस्",
+  "billRef": "बिल सन्दर्भ",
+  "paidOn": "भुक्तान मिति",
+
+  "generateBillTitle": "बिल उत्पन्न गर्नुहोस्",
+  "selectTenant": "भाडावाल छान्नुहोस्",
+  "rentDetails": "भाडा विवरण",
+  "addCharge": "शुल्क थप्नुहोस्",
+  "addDeduction": "कटौती थप्नुहोस्",
+  "totalRent": "जम्मा भाडा",
+  "dueDate": "भुक्तानी म्याद",
+  "notes": "टिप्पणी",
+  "sendBill": "बिल पठाउनुहोस्",
+  "billSentTo": "{name} लाई बिल पठाइयो",
+  "@billSentTo": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "chargeDescription": "शुल्कको विवरण",
+  "amount": "रकम",
+
+  "stayUpdated": "अपडेट रहनुहोस्",
+  "enableNotificationsSubtitle": "भाडा सूचनाको लागि नोटिफिकेसन सक्षम गर्नुहोस्",
+  "rentflowNotifyDesc": "बिल उत्पन्न हुँदा र भुक्तानी आउँदा RentFlow ले तपाईंलाई सूचित गर्न सक्छ।",
+  "notNow": "अहिले होइन",
+  "grant": "अनुमति दिनुहोस्",
+  "signOut": "साइन आउट",
+
+  "rentDue": "भाडा बाँकी",
+  "payNow": "अहिले तिर्नुहोस्",
+  "viewBillDetails": "बिल विवरण हेर्नुहोस्",
+  "nextPayment": "अर्को भुक्तानी",
+  "lastPaymentPaid": "अन्तिम भुक्तानी",
+  "annualRent": "वार्षिक भाडा",
+  "landlordInfo": "मकानधनीको जानकारी",
+  "recurringMonthly": "मासिक नियमित",
+  "noLeaseLinkedYet": "अहिलेसम्म कुनै लिज जोडिएको छैन",
+  "noLeaseDescription": "तपाईंको मकानधनीले खाता जोड्दा भाडा र बिलहरू यहाँ देखिनेछन्।",
+  "daysRemaining": "{days} दिन बाँकी",
+  "@daysRemaining": {
+    "placeholders": {
+      "days": { "type": "int" }
+    }
+  },
+  "dueBy": "{date} सम्म",
+  "@dueBy": {
+    "placeholders": {
+      "date": { "type": "String" }
+    }
+  },
+
+  "noBillsYet": "अहिलेसम्म कुनै बिल छैन",
+  "generatedOn": "{date} मा उत्पन्न",
+  "@generatedOn": {
+    "placeholders": {
+      "date": { "type": "String" }
+    }
+  },
+
+  "payRentTitle": "भाडा तिर्नुहोस्",
+  "paymentMethod": "भुक्तानी विधि",
+  "bankTransfer": "बैंक ट्रान्सफर",
+  "upi": "UPI",
+  "debitCard": "डेबिट कार्ड",
+  "cheque": "चेक",
+  "copyDetails": "विवरण प्रतिलिपि गर्नुहोस्",
+  "openUpiApp": "UPI एप खोल्नुहोस्",
+  "paymentSuccessful": "भुक्तानी सफल ✓",
+  "returnToDashboard": "ड्यासबोर्डमा फर्कनुहोस्",
+  "payButtonLabel": "अहिले तिर्नुहोस्",
+  "noInvoiceFound": "कुनै बाँकी बिल फेला परेन। आफ्नो मकानधनीलाई बिल उत्पन्न गर्न अनुरोध गर्नुहोस्।",
+
+  "rentBreakdown": "भाडा विवरण",
+  "additionalCharges": "थप शुल्कहरू",
+  "deductions": "कटौतीहरू",
+  "totalDue": "जम्मा बाँकी",
+  "generated": "उत्पन्न मिति",
+  "downloadInvoice": "चालान डाउनलोड गर्नुहोस्",
+  "shareBill": "बिल साझा गर्नुहोस्",
+  "contactLandlord": "मकानधनीलाई सम्पर्क गर्नुहोस्",
+
+  "paymentHistory": "भुक्तानी इतिहास",
+  "totalYtd": "कुल वार्षिक",
+  "monthlyAvg": "मासिक औसत",
+  "transactionId": "लेनदेन आईडी",
+  "method": "विधि",
+
+  "languageEnglish": "English",
+  "languageNepali": "नेपाली",
+  "changeLanguage": "भाषा परिवर्तन गर्नुहोस्",
+
+  "optionalField": "वैकल्पिक",
+
+  "wrongRoleOwner": "यो खाता मालिकको हो। फर्कनुहोस् र 'म मालिक हुँ' छान्नुहोस्।",
+  "wrongRoleRenter": "यो खाता भाडावालको हो। फर्कनुहोस् र 'म भाडावाल हुँ' छान्नुहोस्।"
+}
