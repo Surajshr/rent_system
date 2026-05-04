@@ -12,8 +12,8 @@ class SplashCubit extends Cubit<SplashState> {
     this._session,
     this._db, {
     SupabaseClient? supabaseClient,
-  })  : _client = supabaseClient ?? Supabase.instance.client,
-        super(const SplashState());
+  }) : _client = supabaseClient ?? Supabase.instance.client,
+       super(const SplashState());
 
   final SessionRepository _session;
   final RentflowSupabaseService _db;
@@ -38,7 +38,9 @@ class SplashCubit extends Cubit<SplashState> {
           await _session.writeUser(
             SessionUser(
               userId: profile.id,
-              displayName: profile.displayName.isNotEmpty ? profile.displayName : 'User',
+              displayName: profile.displayName.isNotEmpty
+                  ? profile.displayName
+                  : 'User',
               role: profile.role,
               phoneOrEmail: email.isNotEmpty
                   ? email

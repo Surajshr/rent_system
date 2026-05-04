@@ -25,9 +25,14 @@ class RenterPayRentPage extends StatelessWidget {
             context: context,
             builder: (ctx) => AlertDialog(
               title: Text(l.paymentSuccessful),
-              content: Text('${formatInr(inv?.amount ?? 0)}\nRef: ${state.reference}'),
+              content: Text(
+                '${formatInr(inv?.amount ?? 0)}\nRef: ${state.reference}',
+              ),
               actions: [
-                TextButton(onPressed: () => Navigator.pop(ctx), child: Text(l.close)),
+                TextButton(
+                  onPressed: () => Navigator.pop(ctx),
+                  child: Text(l.close),
+                ),
                 FilledButton(
                   onPressed: () {
                     Navigator.pop(ctx);
@@ -63,19 +68,33 @@ class RenterPayRentPage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(inv.propertyName, style: Theme.of(context).textTheme.bodySmall),
+                      Text(
+                        inv.propertyName,
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
                       Text(
                         formatInr(inv.amount),
-                        style: Theme.of(context).textTheme.displayLarge?.copyWith(fontSize: 32),
+                        style: Theme.of(
+                          context,
+                        ).textTheme.displayLarge?.copyWith(fontSize: 32),
                       ),
-                      Text('${l.dueBy(inv.dueLabel)}', style: Theme.of(context).textTheme.bodySmall),
-                      Text('${l.billRef} #${inv.billNumber}', style: Theme.of(context).textTheme.labelSmall),
+                      Text(
+                        '${l.dueBy(inv.dueLabel)}',
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                      Text(
+                        '${l.billRef} #${inv.billNumber}',
+                        style: Theme.of(context).textTheme.labelSmall,
+                      ),
                     ],
                   ),
                 ),
               ),
               const SizedBox(height: AppSpacing.lg),
-              Text(l.paymentMethod, style: Theme.of(context).textTheme.headlineSmall),
+              Text(
+                l.paymentMethod,
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
               RadioListTile<PayMethod>(
                 title: Text(l.bankTransfer),
                 value: PayMethod.bank,
@@ -103,38 +122,125 @@ class RenterPayRentPage extends StatelessWidget {
                 ),
               ],
               RadioListTile<PayMethod>(
-                title: Text(l.upi),
-                value: PayMethod.upi,
+                title: Text(l.qrPayment),
+                value: PayMethod.qr,
                 groupValue: state.method,
-                onChanged: (v) => cubit.selectMethod(v ?? PayMethod.upi),
+                onChanged: (v) => cubit.selectMethod(v ?? PayMethod.qr),
               ),
-              if (state.method == PayMethod.upi)
-                ListTile(
-                  title: Text(cubit.upiId()),
-                  trailing: TextButton(
-                    onPressed: () {},
-                    child: Text(l.openUpiApp),
-                  ),
+              if (state.method == PayMethod.qr)
+                Builder(
+                  builder: (context) {
+                    if (state.qrImages.isEmpty) {
+                      return ListTile(
+                        title: Text(l.noQrImageAvailable),
+                      );
+                    }
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: AppSpacing.md),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(l.scanQrInstruction),
+                          const SizedBox(height: AppSpacing.sm),
+                          SizedBox(
+                            height: 220,
+                            child: ListView.separated(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: state.qrImages.length,
+                              separatorBuilder: (_, _) =>
+                                  const SizedBox(width: AppSpacing.md),
+                              itemBuilder: (context, index) {
+                                final qr = state.qrImages[index];
+                                return GestureDetector(
+                                  onTap: () {
+                                    showDialog<void>(
+                                      context: context,
+                                      builder: (ctx) => Dialog.fullscreen(
+                                        child: Stack(
+                                          children: [
+                                            Container(
+                                              color: Colors.black,
+                                              alignment: Alignment.center,
+                                              child: InteractiveViewer(
+                                                minScale: 1,
+                                                maxScale: 4,
+                                                child: Image.network(
+                                                  qr.url,
+                                                  fit: BoxFit.contain,
+                                                  errorBuilder: (_, _, _) =>
+                                                      Center(
+                                                        child: Text(
+                                                          l.couldNotLoadQrImage,
+                                                          style:
+                                                              const TextStyle(
+                                                                color: AppColors
+                                                                    .white,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                            Positioned(
+                                              top: 16,
+                                              right: 16,
+                                              child: IconButton(
+                                                onPressed: () =>
+                                                    Navigator.of(ctx).pop(),
+                                                icon: const Icon(
+                                                  Icons.close,
+                                                  color: AppColors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(12),
+                                    child: Image.network(
+                                      qr.url,
+                                      height: 220,
+                                      width: 220,
+                                      fit: BoxFit.cover,
+                                      errorBuilder: (_, _, _) => SizedBox(
+                                        height: 80,
+                                        width: 220,
+                                        child: Center(
+                                          child: Text(l.couldNotLoadQrImage),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
                 ),
               RadioListTile<PayMethod>(
-                title: Text(l.debitCard),
-                value: PayMethod.card,
+                title: Text(l.cashPayment),
+                value: PayMethod.cash,
                 groupValue: state.method,
-                onChanged: (v) => cubit.selectMethod(v ?? PayMethod.card),
+                onChanged: (v) => cubit.selectMethod(v ?? PayMethod.cash),
               ),
-              RadioListTile<PayMethod>(
-                title: Text(l.cheque),
-                value: PayMethod.cheque,
-                groupValue: state.method,
-                onChanged: (v) => cubit.selectMethod(v ?? PayMethod.cheque),
-              ),
+              if (state.method == PayMethod.cash)
+                ListTile(
+                  title: Text(l.cashPaymentVerificationHint),
+                ),
               if (state.error != null)
                 Padding(
                   padding: const EdgeInsets.only(top: AppSpacing.md),
                   child: Text(
                     state.error!,
-                    style:
-                        Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.error),
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyMedium?.copyWith(color: AppColors.error),
                   ),
                 ),
               const SizedBox(height: AppSpacing.xl),
@@ -144,7 +250,10 @@ class RenterPayRentPage extends StatelessWidget {
                     ? const SizedBox(
                         height: 22,
                         width: 22,
-                        child: CircularProgressIndicator(strokeWidth: 2, color: AppColors.white),
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: AppColors.white,
+                        ),
                       )
                     : Text(l.payButtonLabel),
               ),

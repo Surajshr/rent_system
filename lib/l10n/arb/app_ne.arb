@@ -90,6 +90,7 @@
   "generateBill": "बिल उत्पन्न गर्नुहोस्",
   "viewPayments": "भुक्तानी हेर्नुहोस्",
   "recentActivity": "हालका गतिविधिहरू",
+  "storageGalleryTitle": "फोटोहरू",
 
   "myProperties": "मेरा सम्पत्तिहरू",
   "noPropertiesYet": "अहिलेसम्म कुनै सम्पत्ति छैन",
@@ -184,10 +185,32 @@
   "cheque": "चेक",
   "copyDetails": "विवरण प्रतिलिपि गर्नुहोस्",
   "openUpiApp": "UPI एप खोल्नुहोस्",
+  "qrPayment": "QR भुक्तानी",
+  "cashPayment": "नगद भुक्तानी",
+  "noQrImageAvailable": "मालिकबाट QR छवि उपलब्ध छैन।",
+  "scanQrInstruction": "तलको कुनै QR स्क्यान गरी भुक्तानी गर्नुहोस्",
+  "couldNotLoadQrImage": "QR छवि लोड गर्न सकिएन",
+  "cashPaymentVerificationHint": "यो नगद भुक्तानी मालिकले ड्यासबोर्डबाट पुष्टि गर्नुहुनेछ।",
   "paymentSuccessful": "भुक्तानी सफल ✓",
   "returnToDashboard": "ड्यासबोर्डमा फर्कनुहोस्",
   "payButtonLabel": "अहिले तिर्नुहोस्",
   "noInvoiceFound": "कुनै बाँकी बिल फेला परेन। आफ्नो मकानधनीलाई बिल उत्पन्न गर्न अनुरोध गर्नुहोस्।",
+  "cashPaymentVerifications": "नगद भुक्तानी पुष्टि",
+  "noPendingCashVerifications": "कुनै बाँकी नगद पुष्टि छैन",
+  "requestedOn": "अनुरोध मिति {date}",
+  "@requestedOn": {
+    "placeholders": {
+      "date": { "type": "String" }
+    }
+  },
+  "cashPaymentMarkedReceived": "नगद भुक्तानी प्राप्त भएको चिन्ह लगाइयो",
+  "couldNotVerifyCashPayment": "नगद भुक्तानी पुष्टि गर्न सकिएन",
+  "verifyAmount": "{amount} पुष्टि गर्नुहोस्",
+  "@verifyAmount": {
+    "placeholders": {
+      "amount": { "type": "String" }
+    }
+  },
 
   "rentBreakdown": "भाडा विवरण",
   "additionalCharges": "थप शुल्कहरू",

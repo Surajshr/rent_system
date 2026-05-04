@@ -93,6 +93,7 @@
   "generateBill": "Generate Bill",
   "viewPayments": "View Payments",
   "recentActivity": "Recent Activity",
+  "storageGalleryTitle": "Photos",
 
   "myProperties": "My Properties",
   "noPropertiesYet": "No properties yet",
@@ -187,10 +188,32 @@
   "cheque": "Cheque",
   "copyDetails": "Copy Details",
   "openUpiApp": "Open UPI App",
+  "qrPayment": "QR Payment",
+  "cashPayment": "Cash Payment",
+  "noQrImageAvailable": "No QR image available from owner.",
+  "scanQrInstruction": "Scan any QR below and complete payment",
+  "couldNotLoadQrImage": "Could not load QR image",
+  "cashPaymentVerificationHint": "Owner will verify this cash payment from dashboard.",
   "paymentSuccessful": "Payment Successful ✓",
   "returnToDashboard": "Return to Dashboard",
   "payButtonLabel": "Pay now",
   "noInvoiceFound": "No pending bill found. Ask your landlord to generate a bill.",
+  "cashPaymentVerifications": "Cash Payment Verifications",
+  "noPendingCashVerifications": "No pending cash verifications",
+  "requestedOn": "Requested {date}",
+  "@requestedOn": {
+    "placeholders": {
+      "date": { "type": "String" }
+    }
+  },
+  "cashPaymentMarkedReceived": "Cash payment marked as received",
+  "couldNotVerifyCashPayment": "Could not verify cash payment",
+  "verifyAmount": "Verify {amount}",
+  "@verifyAmount": {
+    "placeholders": {
+      "amount": { "type": "String" }
+    }
+  },
 
   "rentBreakdown": "Rent Breakdown",
   "additionalCharges": "Additional Charges",

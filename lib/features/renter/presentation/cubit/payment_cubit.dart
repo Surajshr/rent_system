@@ -3,9 +3,12 @@ import 'package:equatable/equatable.dart';
 import 'package:rent_system/core/errors/app_exception.dart';
 import 'package:rent_system/core/session/session_repository.dart';
 import 'package:rent_system/core/supabase/rentflow_supabase_service.dart'
-    show PayRentInvoiceSummary, RentflowSupabaseService;
+    show
+        PayRentInvoiceSummary,
+        RentflowSupabaseService,
+        StorageImageRef;
 
-enum PayMethod { bank, upi, card, cheque }
+enum PayMethod { bank, qr, cash }
 
 class PaymentState extends Equatable {
   const PaymentState({
@@ -17,6 +20,7 @@ class PaymentState extends Equatable {
     this.success = false,
     this.error,
     this.reference,
+    this.qrImages = const [],
   });
 
   final PayMethod method;
@@ -27,6 +31,7 @@ class PaymentState extends Equatable {
   final bool success;
   final String? error;
   final String? reference;
+  final List<StorageImageRef> qrImages;
 
   PaymentState copyWith({
     PayMethod? method,
@@ -37,6 +42,7 @@ class PaymentState extends Equatable {
     bool? success,
     String? error,
     String? reference,
+    List<StorageImageRef>? qrImages,
   }) {
     return PaymentState(
       method: method ?? this.method,
@@ -47,12 +53,23 @@ class PaymentState extends Equatable {
       success: success ?? this.success,
       error: error,
       reference: reference ?? this.reference,
+      qrImages: qrImages ?? this.qrImages,
     );
   }
 
   @override
   List<Object?> get props =>
-      [method, invoiceLoading, invoice, invoiceError, processing, success, error, reference];
+      [
+        method,
+        invoiceLoading,
+        invoice,
+        invoiceError,
+        processing,
+        success,
+        error,
+        reference,
+        qrImages,
+      ];
 }
 
 class PaymentCubit extends Cubit<PaymentState> {
@@ -98,7 +115,23 @@ class PaymentCubit extends Cubit<PaymentState> {
         );
         return;
       }
-      emit(state.copyWith(invoiceLoading: false, invoice: summary));
+      var qrImages = const <StorageImageRef>[];
+      try {
+        qrImages = await _db.fetchStorageImageFiles(
+          bucket: RentflowSupabaseService.kQrCodesBucket,
+          folderPath: RentflowSupabaseService.kPaymentQrFolder,
+        );
+      } on Exception {
+        qrImages = const <StorageImageRef>[];
+      }
+      if (isClosed) return;
+      emit(
+        state.copyWith(
+          invoiceLoading: false,
+          invoice: summary,
+          qrImages: qrImages,
+        ),
+      );
     } on AppException catch (e) {
       if (!isClosed) emit(state.copyWith(invoiceLoading: false, invoiceError: e.message));
     } on Exception {
@@ -127,12 +160,15 @@ class PaymentCubit extends Cubit<PaymentState> {
     try {
       final label = switch (state.method) {
         PayMethod.bank => 'Bank transfer',
-        PayMethod.upi => 'UPI',
-        PayMethod.card => 'Card',
-        PayMethod.cheque => 'Cheque',
+        PayMethod.qr => 'QR',
+        PayMethod.cash => 'Cash',
       };
-      final ref = await _db.recordRenterPayment(paymentId: inv.paymentId, methodLabel: label);
+      final ref = state.method == PayMethod.cash
+          ? await _db.recordRenterCashSubmission(paymentId: inv.paymentId)
+          : await _db.recordRenterPayment(paymentId: inv.paymentId, methodLabel: label);
       emit(state.copyWith(processing: false, success: true, reference: ref));
+      // Pull latest invoice/payment state from Supabase so UI reflects updates.
+      await load();
     } on AppException catch (e) {
       emit(state.copyWith(processing: false, error: e.message));
     } on Exception {
@@ -149,6 +185,4 @@ class PaymentCubit extends Cubit<PaymentState> {
   String bankIfsc() => 'HDFC0001234';
 
   String bankBranch() => '—';
-
-  String upiId() => 'rentflow@upi';
 }

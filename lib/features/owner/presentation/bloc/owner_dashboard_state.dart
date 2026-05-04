@@ -11,6 +11,8 @@ class OwnerDashboardState extends Equatable {
     this.overduePropertiesLabel = '',
     this.newTenantsLabel = '',
     this.activities = const [],
+    this.dashboardImages = const [],
+    this.cashVerifications = const [],
   });
 
   const OwnerDashboardState.loading() : this._(loading: true);
@@ -24,39 +26,50 @@ class OwnerDashboardState extends Equatable {
     required String overduePropertiesLabel,
     required String newTenantsLabel,
     required List<ActivityItem> activities,
+    List<StorageImageRef> dashboardImages = const [],
+    List<CashVerificationRow> cashVerifications = const [],
   }) : this._(
-          loading: false,
-          totalProperties: totalProperties,
-          activeTenants: activeTenants,
-          collectedThisMonth: collectedThisMonth,
-          pendingAmount: pendingAmount,
-          collectionTarget: collectionTarget,
-          overduePropertiesLabel: overduePropertiesLabel,
-          newTenantsLabel: newTenantsLabel,
-          activities: activities,
-        );
+         loading: false,
+         totalProperties: totalProperties,
+         activeTenants: activeTenants,
+         collectedThisMonth: collectedThisMonth,
+         pendingAmount: pendingAmount,
+         collectionTarget: collectionTarget,
+         overduePropertiesLabel: overduePropertiesLabel,
+         newTenantsLabel: newTenantsLabel,
+         activities: activities,
+         dashboardImages: dashboardImages,
+         cashVerifications: cashVerifications,
+       );
 
   final bool loading;
   final int totalProperties;
   final int activeTenants;
   final double collectedThisMonth;
   final double pendingAmount;
-  /// Expected monthly rent roll (sum of tenant [monthly_rent]) for comparison in UI.
+
+  /// Expected monthly roll (sum of tenants' monthly rent) for comparison in UI.
   final double collectionTarget;
   final String overduePropertiesLabel;
   final String newTenantsLabel;
   final List<ActivityItem> activities;
 
+  /// Resolved image URLs from Supabase Storage for the dashboard gallery.
+  final List<StorageImageRef> dashboardImages;
+  final List<CashVerificationRow> cashVerifications;
+
   @override
   List<Object?> get props => [
-        loading,
-        totalProperties,
-        activeTenants,
-        collectedThisMonth,
-        pendingAmount,
-        collectionTarget,
-        overduePropertiesLabel,
-        newTenantsLabel,
-        activities,
-      ];
+    loading,
+    totalProperties,
+    activeTenants,
+    collectedThisMonth,
+    pendingAmount,
+    collectionTarget,
+    overduePropertiesLabel,
+    newTenantsLabel,
+    activities,
+    dashboardImages,
+    cashVerifications,
+  ];
 }

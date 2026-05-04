@@ -7,13 +7,14 @@ import 'package:rent_system/features/owner/domain/entities/owner_models.dart';
 part 'owner_dashboard_event.dart';
 part 'owner_dashboard_state.dart';
 
-class OwnerDashboardBloc extends Bloc<OwnerDashboardEvent, OwnerDashboardState> {
+class OwnerDashboardBloc
+    extends Bloc<OwnerDashboardEvent, OwnerDashboardState> {
   OwnerDashboardBloc({
     required SessionRepository session,
     required RentflowSupabaseService db,
-  })  : _session = session,
-        _db = db,
-        super(const OwnerDashboardState.loading()) {
+  }) : _session = session,
+       _db = db,
+       super(const OwnerDashboardState.loading()) {
     on<OwnerDashboardStarted>(_onStarted);
     on<OwnerDashboardRefreshed>(_onStarted);
   }
@@ -45,19 +46,37 @@ class OwnerDashboardBloc extends Bloc<OwnerDashboardEvent, OwnerDashboardState> 
     try {
       final metrics = await _db.fetchOwnerDashboardMetrics(uid);
       final target = await _db.sumTenantMonthlyRentForOwner(uid);
-      final activities = await _db.fetchRecentActivities(uid, limit: 6);
+      final activities = await _db.fetchRecentActivities(uid);
+      var cashVerifications = const <CashVerificationRow>[];
+      try {
+        cashVerifications = await _db.fetchOwnerCashVerifications(uid);
+      } on Exception {
+        cashVerifications = const <CashVerificationRow>[];
+      }
+      var dashboardImages = const <StorageImageRef>[];
+      try {
+        dashboardImages = await _db.fetchStorageImageFiles(
+          bucket: RentflowSupabaseService.kQrCodesBucket,
+          folderPath: RentflowSupabaseService.kPaymentQrFolder,
+        );
+      } on Exception {
+        dashboardImages = const <StorageImageRef>[];
+      }
       final overdueCount = metrics['overdueCount'] as int? ?? 0;
       final newTenants = metrics['newTenantsThisMonth'] as int? ?? 0;
       emit(
         OwnerDashboardState.ready(
           totalProperties: metrics['totalProperties'] as int? ?? 0,
           activeTenants: metrics['activeTenants'] as int? ?? 0,
-          collectedThisMonth: (metrics['collectedThisMonth'] as num?)?.toDouble() ?? 0,
+          collectedThisMonth:
+              (metrics['collectedThisMonth'] as num?)?.toDouble() ?? 0,
           pendingAmount: (metrics['pendingAmount'] as num?)?.toDouble() ?? 0,
           collectionTarget: target,
           overduePropertiesLabel: '$overdueCount payments overdue',
           newTenantsLabel: '+$newTenants this month',
           activities: activities,
+          dashboardImages: dashboardImages,
+          cashVerifications: cashVerifications,
         ),
       );
     } on Exception {

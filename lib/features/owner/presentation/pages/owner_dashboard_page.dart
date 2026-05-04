@@ -8,10 +8,12 @@ import 'package:rent_system/core/constants/app_layout.dart';
 import 'package:rent_system/core/constants/app_shadows.dart';
 import 'package:rent_system/core/constants/app_spacing.dart';
 import 'package:rent_system/core/session/session_repository.dart';
+import 'package:rent_system/core/supabase/rentflow_supabase_service.dart';
 import 'package:rent_system/core/utils/currency_formatter.dart';
 import 'package:rent_system/features/common/widgets/initials_avatar.dart';
 import 'package:rent_system/features/owner/presentation/bloc/owner_dashboard_bloc.dart';
 import 'package:rent_system/features/owner/presentation/pages/owner_shell_page.dart';
+import 'package:rent_system/features/owner/presentation/widgets/owner_dashboard_storage_gallery.dart';
 import 'package:rent_system/l10n/l10n.dart';
 
 class OwnerDashboardPage extends StatelessWidget {
@@ -152,6 +154,70 @@ class OwnerDashboardPage extends StatelessWidget {
                     label: l.viewPayments,
                     onTap: () => context.goOwnerPayments(),
                   ),
+                  // OwnerDashboardStorageGallery(
+                  //   title: l.storageGalleryTitle,
+                  //   images: state.dashboardImages,
+                  // ),
+                  const SizedBox(height: AppSpacing.xl),
+                  Text(
+                    l.cashPaymentVerifications,
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
+                  const SizedBox(height: AppSpacing.sm),
+                  if (state.cashVerifications.isEmpty)
+                    Text(
+                      l.noPendingCashVerifications,
+                      style: Theme.of(context).textTheme.bodySmall,
+                    )
+                  else
+                    ...state.cashVerifications.map(
+                      (item) => Card(
+                        margin: const EdgeInsets.only(bottom: AppSpacing.sm),
+                        child: ListTile(
+                          title: Text(
+                            '${item.tenantName} · ${item.propertyName}',
+                          ),
+                          subtitle: Text(
+                            '${l.billRef} #${item.billRef} • ${l.requestedOn(item.requestedOn)}',
+                          ),
+                          trailing: FilledButton(
+                            onPressed: () async {
+                              try {
+                                await context
+                                    .read<RentflowSupabaseService>()
+                                    .verifyCashPaymentReceived(item.paymentId);
+                                if (context.mounted) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        l.cashPaymentMarkedReceived,
+                                      ),
+                                    ),
+                                  );
+                                  context.read<OwnerDashboardBloc>().add(
+                                    const OwnerDashboardRefreshed(),
+                                  );
+                                }
+                              } on Exception {
+                                if (context.mounted) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        l.couldNotVerifyCashPayment,
+                                      ),
+                                    ),
+                                  );
+                                }
+                              }
+                            },
+                            child: Text(
+                              l.verifyAmount(formatInr(item.amount)),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   const SizedBox(height: AppSpacing.xl),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
