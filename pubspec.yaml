@@ -32,7 +32,7 @@ dependencies:
 dev_dependencies:
   bloc_lint: ^0.4.1
   bloc_test: ^10.0.0
-  bloc_tools: ^0.1.0-dev.23
+  bloc_tools: ^0.1.0-dev.24
   flutter_launcher_icons: ^0.14.4
   flutter_native_splash: ^2.4.7
   flutter_test:
